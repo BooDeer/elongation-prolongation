@@ -1,0 +1,19 @@
+{
+	"name": "Facebookless",
+	"description": "When you either don't have friends or want peace of mind",
+	"version": "1.0",
+	"manifest_version": 3,
+	// "background": {
+	// },
+	"permissions": ["scripting"],
+	"content_scripts": [
+        {
+            "matches": [
+				"https://www.facebook.com/*"
+			],
+			"js": [
+                "facebookless.js"
+            ]
+        }
+    ]
+}
