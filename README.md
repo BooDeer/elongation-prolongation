@@ -14,7 +14,13 @@
 
 ## - Alot people are addicted to social medias, scrolling for several hours consuming content that's irrelevant and trivial, what's an easier way to reduce your facebook addiction than simply deleting its source, you can't scroll for hours if there's no content to scroll through, right?
 
-<img src="assets/images/strange.jpg">
+<img src="assets/images/strange.jpg"
+	style="user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;">
 <br/><br/>
 
 <!-- ## [Color-Wheel](#) -->
