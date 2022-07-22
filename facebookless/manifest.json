@@ -9,7 +9,7 @@
 	"content_scripts": [
         {
             "matches": [
-				"https://www.facebook.com/*"
+				"https://*.facebook.com/*"
 			],
 			"js": [
                 "facebookless.js"
