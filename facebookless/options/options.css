@@ -1,0 +1,20 @@
+body{
+	margin: 3em;
+	background-color: #bfb7e6;
+	font-family: 'Fira Code', monospace;
+}
+main {
+	position: absolute;
+	left: 50%;
+	top: 30%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+  }
+
+form {
+	font-size: large;
+}
+/* 
+h1 {
+
+} */

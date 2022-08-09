@@ -2,10 +2,12 @@
 	"name": "Facebookless",
 	"description": "When you either don't have friends or want peace of mind",
 	"version": "1.0",
-	"manifest_version": 3,
-	// "background": {
-	// },
-	"permissions": ["scripting"],
+	"manifest_version": 3, 
+	"background.service_worker": {
+		"scripts": ["options/options.js"]
+	},
+	"permissions": ["scripting", "storage"],
+	"options_page": "options/options.html",
 	"content_scripts": [
         {
             "matches": [
