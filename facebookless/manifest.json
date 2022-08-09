@@ -11,7 +11,8 @@
 	"content_scripts": [
         {
             "matches": [
-				"https://*.facebook.com/*"
+				"https://*.facebook.com/*",
+				"https://*.instagram.com/*"
 			],
 			"js": [
                 "facebookless.js"
