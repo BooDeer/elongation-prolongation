@@ -1,8 +1,12 @@
+const storage = chrome.storage.sync;
 
-console.log("test reaching here");
-
-const target = document.querySelector('[role="main"]')
-setTimeout(null, 3000);
-console.log(target);
-target.parentNode.removeChild(target);
-console.log("did I find it?");
+if (window.location.hostname.includes("facebook"))
+{
+	storage.get("facebook", (e) => {
+		if (Object.values(e)[0] === true){
+			const target = document.querySelector('[role="main"]')
+			setTimeout(null, 3000);
+			target.parentNode.removeChild(target);
+		}
+	})
+}
