@@ -1,6 +1,6 @@
 {
-	"name": "Getting Started Example",
-	"description": "Build an Extension!",
+	"name": "Color-wheel",
+	"description": "Happier webpage!",
 	"version": "1.0",
 	"manifest_version": 3,
 	"options_page": "options.html",
