@@ -14,7 +14,10 @@ main {
 form {
 	font-size: large;
 }
-/* 
-h1 {
 
-} */
+.wip {
+	opacity: 0.5;
+}
+span {
+	color: blanchedalmond;
+}
