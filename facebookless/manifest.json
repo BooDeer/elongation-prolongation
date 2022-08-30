@@ -12,7 +12,9 @@
         {
             "matches": [
 				"https://*.facebook.com/*",
-				"https://*.instagram.com/*"
+				"https://*.instagram.com/*",
+				"https://*.twitter.com/*",
+				"https://*.reddit.com/*"
 			],
 			"js": [
                 "facebookless.js"
