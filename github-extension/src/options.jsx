@@ -5,26 +5,32 @@ const storage = chrome.storage.sync;
 import './options.css'
   
 function App() {
-	storage.get("test", () => {
-		console.log("test")
-	})
-
+	console.log("test")
 
 	const [input, setInput] = React.useState("")
 	const [list, setList] = React.useState([])
 
+	const handleSubmit = function (e) {
+		e.preventDefault();
+		console.log("submit form of value ====> ", input)
+		setList(prevState => [...prevState, input])
+		setInput("")
+		console.log(list)
+	}
+
+
+	const table = list.map(e => {
+		return <tr key={ez}><td>{e}</td><td>{e}</td><td>{e}</td></tr>
+	})
 
   return (
     <div className="App">
 		<h1>List of ignored users</h1>
 		<div>
 			<form
-			action="#"
-			onSubmit= {e => {
-				console.log("submit form")
-				e.preventDefault();
-				console.log(e.target.value)
-			}}>
+			// action="#"
+			onSubmit= {handleSubmit}
+			>
 				<label htmlFor="user">Add user to ignore:</label>
 				<input
 					onChange={e => {
@@ -36,12 +42,11 @@ function App() {
 					name='user'
 					id='user'
 					placeholder="Enter the username"
-					
 					/>
-				<button type="submit" className=""> Add</button>
+				<button type="submit" className="">Add</button>
 			</form>
 		</div>
-
+		<h1>debugging value ===> {input}</h1>
 		<div>
 			{/* <ul>
 				<li><span>user 1</span> <span><input type="checkbox" /></span><button>delete</button></li>
@@ -67,6 +72,9 @@ function App() {
 					</tr>
 				</thead>
 				<tbody>
+					{/* {list.map} */}
+					{table}
+					{/* <tr><td>test 1</td><td>test2</td><td>test3</td></tr> */}
 				</tbody>
 			</table>
 		</div>
