@@ -1,0 +1,26 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	background-color: #212121;
+	color: #fff;
+}
+
+.App {
+	/* display: flex;
+	flex-direction: column;
+	height: 100vh;
+	 */
+	margin: 3.5rem;
+	margin-top: 10%;
+	border: 3px solid red;
+	text-align: center;
+}
+
+table {
+	margin: 3rem auto;
+	width: 75%;
+}
