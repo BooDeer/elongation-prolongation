@@ -16,11 +16,26 @@ body {
 	 */
 	margin: 3.5rem;
 	margin-top: 10%;
-	border: 3px solid red;
+	/* border: 3px solid red;
+	border-radius: 20%; */
 	text-align: center;
 }
+
 
 table {
 	margin: 3rem auto;
 	width: 75%;
+	table-layout: fixed;
+
 }
+
+input {
+	margin: auto 1rem;
+}
+
+.wip {
+	opacity: 0.5;
+	color: blanchedalmond;
+}
+/* span {
+} */

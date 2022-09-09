@@ -8,7 +8,7 @@ const removeUsers = () => {
 	if (users) {
 		for (let j = 0; j < users.length; j++) {
 			let test = document.querySelectorAll(`#panel-1  [href="/${users[j]}"]`);
-			console.log(test)
+			// console.log(test)
 			for (let i = 0; i < test.length; i++)
 			{
 				let tmp = test[i]?.parentNode?.parentNode?.parentNode?.parentNode;
