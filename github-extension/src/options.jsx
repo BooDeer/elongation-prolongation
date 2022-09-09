@@ -1,26 +1,58 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
-const storage = chrome.storage.sync;
-
 import './options.css'
+
+
+const storage = chrome.storage.sync;
   
 function App() {
-	console.log("test")
-
+	
 	const [input, setInput] = React.useState("")
 	const [list, setList] = React.useState([])
-
-	const handleSubmit = function (e) {
+	
+	useEffect(() => {
+		// get the list of users from storage first render only
+		storage.get(['list'], function(result) {
+			setList(result.list)
+			console.log(result.list)
+		})
+	}, []);
+	
+	
+	  const handleSubmit = function (e) {
 		e.preventDefault();
 		console.log("submit form of value ====> ", input)
-		setList(prevState => [...prevState, input])
+		if (input === "" || input.length > 39) {
+			return ; 
+		}
+		setList(prevState => {
+				if (!prevState.includes(input.trim())) {
+					storage.set({list: [...prevState, input.trim()]}, function() {
+					})
+					return [...prevState, input.trim()]
+				}
+				else
+					return [...prevState]
+			})
+		storage.get(['list'], function(result) {
+			console.log(result)
+		})
 		setInput("")
 		console.log(list)
 	}
 
 
+	const handleDelete = function (e) {
+		e.preventDefault();
+		console.log("delete button clicked")
+		setList(prevState => {
+			storage.set({list: prevState.filter(item => item !== e.target.value)}, function() {
+			})
+			return prevState.filter(item => item !== e.target.value)
+		})
+	}
 	const table = list.map(e => {
-		return <tr key={ez}><td>{e}</td><td>{e}</td><td>{e}</td></tr>
+		return <tr key={e}><td>{e}</td><td>{e}</td><td><button onClick={handleDelete} value={e}>remove user</button></td></tr>
 	})
 
   return (
@@ -42,27 +74,13 @@ function App() {
 					name='user'
 					id='user'
 					placeholder="Enter the username"
+					autoFocus
 					/>
 				<button type="submit" className="">Add</button>
 			</form>
 		</div>
 		<h1>debugging value ===> {input}</h1>
 		<div>
-			{/* <ul>
-				<li><span>user 1</span> <span><input type="checkbox" /></span><button>delete</button></li>
-				<li><span>user 1 user 1  user 1a</span> <span><input type="checkbox" /></span><button>delete</button></li>
-				<li><span>user 1</span> <span><input type="checkbox" /></span><button>delete</button></li>
-				<li><span>user 1 user 1user 1user 1</span> <span><input type="checkbox" /></span><button>delete</button></li>
-				<li><span>user 1 user 1</span> <span><input type="checkbox" /></span><button>delete</button></li>
-				<li><span>user 1</span> <span><input type="checkbox" /></span><button>delete</button></li>
-				<li><span>user 1</span> <span><input type="checkbox" /></span><button>delete</button></li>
-				<li><span>user 1</span> <span><input type="checkbox" /></span><button>delete</button></li>
-				<li><span>user 1</span> <span><input type="checkbox" /></span><button>delete</button></li>
-				<li><span>user 1</span> <span><input type="checkbox" /></span><button>delete</button></li>
-				<li><span>user 1</span> <span><input type="checkbox" /></span><button>delete</button></li>
-				<li><span>user 1</span> <span><input type="checkbox" /></span><button>delete</button></li>
-			</ul> */}
-
 			<table border="1">
 				<thead>
 					<tr>
@@ -72,9 +90,7 @@ function App() {
 					</tr>
 				</thead>
 				<tbody>
-					{/* {list.map} */}
 					{table}
-					{/* <tr><td>test 1</td><td>test2</td><td>test3</td></tr> */}
 				</tbody>
 			</table>
 		</div>

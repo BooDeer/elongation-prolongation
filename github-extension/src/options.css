@@ -23,4 +23,6 @@ body {
 table {
 	margin: 3rem auto;
 	width: 75%;
+	table-layout: fixed;
+
 }
