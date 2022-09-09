@@ -4,7 +4,7 @@ import './options.css'
 
 
 const storage = chrome.storage.sync;
-  
+storage.set({list: []}, function() {});
 function App() {
 	
 	const [input, setInput] = React.useState("")
@@ -13,9 +13,14 @@ function App() {
 	useEffect(() => {
 		// get the list of users from storage first render only
 		storage.get(['list'], function(result) {
+			if (result.list) {
 			setList(result.list)
-			console.log(result.list)
-		})
+		}
+		else {
+			setList([])
+		}
+		console.log(list)
+	})
 	}, []);
 	
 	
